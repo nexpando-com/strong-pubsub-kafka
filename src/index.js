@@ -46,8 +46,8 @@ export default class Adapter extends EventEmitter {
   }
 
   connect(cb) {
-    this.kafkaClient = new KafkaClient({...kafkaOptions, ...this.options.client})
-    this.producer = new Producer(this.kafkaClient, {...producerOptions, ...this.options.producer})
+    this.kafkaClient = new KafkaClient({...kafkaOptions, ...this.options})
+    this.producer = new Producer(this.kafkaClient, {...producerOptions, ...this.options})
     this.producer.on('ready', () => {
       cb && cb()
     })
@@ -61,13 +61,17 @@ export default class Adapter extends EventEmitter {
   }
 
   publish(topic, message, options, cb) {
+    // 0: No compression, 1: Compress using GZip, 2: Compress using snappy
+    let { attributes = 0, key, partition } = options
     let timestamp = Date.now()
     let payload = {
       topic,
       messages: [message],
-      attributes: 0, // 0: No compression, 1: Compress using GZip, 2: Compress using snappy
+      attributes,
       timestamp
     }
+    payload = key ? {...payload, key} : payload
+    payload = partition ? {...payload, partition} : payload
     let payloads = [payload]
 
     this.producer.send(payloads, (error, data) => {
@@ -76,7 +80,10 @@ export default class Adapter extends EventEmitter {
   }
 
   subscribe(topic, options, cb) {
-    this.consumerGroup = new ConsumerGroup({...consumerGroupOptions, ...this.options.consumerGroup}, topic)
+    let { kafkaHost } = this.options
+    let _options = {...consumerGroupOptions, kafkaHost, ...options}
+
+    this.consumerGroup = new ConsumerGroup(_options, topic)
     let client = this.client
     this.consumerGroup.on('message', (message) => {
       let { topic } = message
