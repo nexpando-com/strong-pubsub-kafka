@@ -1,6 +1,6 @@
 import 'babel-polyfill'
 import Client from 'strong-pubsub'
-import Adapter from '../index'
+import Adapter from '../src/index'
 
 const client = new Client({}, Adapter)
 
