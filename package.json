@@ -1,0 +1,26 @@
+{
+  "name": "strong-pubsub-kafka",
+  "version": "1.0.0",
+  "description": "Pubsub for Kafka broker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nexpando-com/strong-pubsub-kafka.git"
+  },
+  "keywords": [
+    "pubsub",
+    "kafka"
+  ],
+  "author": "Toan Tran <toan.tran@nexpando.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nexpando-com/strong-pubsub-kafka/issues"
+  },
+  "homepage": "https://github.com/nexpando-com/strong-pubsub-kafka#readme",
+  "dependencies": {
+    "kafka-node": "^5.0.0"
+  }
+}
