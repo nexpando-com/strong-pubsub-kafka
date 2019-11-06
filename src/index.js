@@ -85,6 +85,10 @@ export default class Adapter extends EventEmitter {
 
     this.consumerGroup = new ConsumerGroup(_options, topic)
     let client = this.client
+    this.consumerGroup.on('connect', () => {
+      client.emit('connect', topic, _options)
+    })
+
     this.consumerGroup.on('message', (message) => {
       let { topic } = message
       client.emit('message', topic, message)
