@@ -38,4 +38,8 @@ const run = async () => {
     else console.log(resp)
   })
 }
+
+(async() => {
+  await run()
+})()
 ```
