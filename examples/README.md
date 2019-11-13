@@ -11,7 +11,7 @@ docker-compose up -d
 # check zookeeper instances
 
 docker run --net=host --rm confluentinc/cp-zookeeper:5.3.1 bash -c "echo stat | nc localhost 2181 | grep Mode"
-docker run --net=host --rm confluentinc/cp-zookeeper:5.3.1 bash -c "echo stat | nc localhost 22181 | grep Mode"
+docker run --net=host --rm confluentinc/cp-zookeeper:5.3.1 bash -c "echo stat | nc localhost 2182 | grep Mode"
 
 # Mode: leader
 # Mode: follower
