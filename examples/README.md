@@ -20,13 +20,22 @@ docker run --net=host --rm confluentinc/cp-zookeeper:5.3.1 bash -c "echo stat | 
 docker logs kafka1 | grep started
 
 # [2019-11-12 04:13:23,876] INFO [Kafka Server 1], started (kafka.server.KafkaServer)
+
+# check kafka brokers
+kafkacat -b localhost:9092 -L
+
+# Metadata for all topics (from broker -1: localhost:9092/bootstrap):
+# 3 brokers:
+#  broker 2 at 127.0.0.1:9092
+#  broker 3 at 127.0.0.1:9093
+#  broker 1 at 127.0.0.1:9091
 ```
 
 # Publishing messages
 
 ```javascript
 import Client from 'strong-pubsub'
-import Adapter from '../src/index'
+import Adapter from 'strong-pubsub-kafka'
 
 const options = { kafkaHost: '127.0.0.1:9091,127.0.0.1:9092,127.0.0.1:9093' }
 const client = new Client(options, Adapter)
@@ -61,3 +70,8 @@ for (let idx = 0; idx < max; idx++) {
 //  key: null,
 //  timestamp: 2019-11-12T16:59:13.952Z }
 ```
+
+# References
+
+- [Kafka Document](https://kafka.apache.org/documentation/)
+- [Kafkacat](https://github.com/edenhill/kafkacat)
