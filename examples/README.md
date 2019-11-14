@@ -24,6 +24,9 @@ docker logs kafka1 | grep started
 # check kafka brokers
 kafkacat -b localhost:9092 -L
 
+# or
+docker run -it --network=host edenhill/kafkacat:1.5.0 -b localhost:9092 -L
+
 # Metadata for all topics (from broker -1: localhost:9092/bootstrap):
 # 3 brokers:
 #  broker 2 at 127.0.0.1:9092
