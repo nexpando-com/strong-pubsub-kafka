@@ -43,3 +43,9 @@ const run = async () => {
   await run()
 })()
 ```
+
+# Examples
+
+- [Setup kafka cluster for development - Docker](examples/kafka-cluster/docker-compose.yml)
+- [Pubslishing/Consuming messages](examples/README.md)
+

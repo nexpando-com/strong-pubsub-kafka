@@ -78,3 +78,4 @@ for (let idx = 0; idx < max; idx++) {
 
 - [Kafka Document](https://kafka.apache.org/documentation/)
 - [Kafkacat](https://github.com/edenhill/kafkacat)
+- [Kafka listener explained](https://www.confluent.io/blog/kafka-listeners-explained)
