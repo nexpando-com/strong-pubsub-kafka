@@ -74,6 +74,12 @@ for (let idx = 0; idx < max; idx++) {
 //  timestamp: 2019-11-12T16:59:13.952Z }
 ```
 
+# Parallel processing
+
+- Number of partitions specifies the level of parallelism
+- `KAFKA_NUM_PARTITIONS` parameter in [docker-compose.yml](kafka-cluster/docker-compose.yml) should be greater than 1
+- A partition can be processed only by a consumer in a consumer group at once
+
 # References
 
 - [Kafka Document](https://kafka.apache.org/documentation/)
