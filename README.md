@@ -1,5 +1,6 @@
 # strong-pubsub-kafka
-Pubsub adapter for Kafka broker
+
+Pubsub adapter for Kafka broker. `strong-pubsub-kafka` provides a convenient method to create a `kafka` client in `nodejs`. It supports publishing and subscribing to topics.
 
 # Installation
 
