@@ -1,8 +1,7 @@
-import 'babel-polyfill'
 import Client from 'strong-pubsub'
 import Adapter from '../src/index'
 
-const options = { kafkaHost: '127.0.0.1:9091,127.0.0.1:9092,127.0.0.1:9093' }
+const options = { kafkaHost: 'localhost:19092,localhost:29092,localhost:39092' }
 const client = new Client(options, Adapter)
 
 const connect = () => {
@@ -23,7 +22,7 @@ describe("Connect to broker", async function() {
     console.log('Incoming message...', topic, msg)
   })
 
-  const max = 10
+  const max = 10000
   for (let idx = 0; idx < max; idx++) {
     let msg = `message-${idx}`
     client.publish('test', msg, {}, (err, resp) => {

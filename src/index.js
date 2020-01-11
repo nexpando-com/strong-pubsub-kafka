@@ -10,13 +10,13 @@ const defaultConnectRetryOptions = {
   randomize: true
 }
 
-const kAFKA_CLIENT_ID = process.env.kAFKA_CLIENT_ID || 'strong-pubsub-kafka'
+const KAFKA_CLIENT_ID = process.env.kAFKA_CLIENT_ID || 'strong-pubsub-kafka'
 const KAFKA_CONSUMER_GROUP_ID = process.env.KAFKA_CONSUMER_GROUP_ID || 'strong-pubsub-kafka'
 const KAFKA_HOSTS = process.env.KAFKA_HOSTS || 'localhost:9092'
 
 const kafkaOptions = {
   kafkaHost: KAFKA_HOSTS,
-  clientId: kAFKA_CLIENT_ID,
+  clientId: KAFKA_CLIENT_ID,
   autoConnect: true,
   connectRetryOptions: defaultConnectRetryOptions
 }
