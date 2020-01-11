@@ -6,6 +6,8 @@ Pubsub adapter for Kafka broker. `strong-pubsub-kafka` provides a convenient met
 
 ```sh
 npm add https://github.com/nexpando-com/strong-pubsub-kafka.git --save
+# or
+yarn add https://github.com/nexpando-com/strong-pubsub-kafka.git
 ```
 
 # Usage
